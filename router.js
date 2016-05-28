@@ -14,7 +14,7 @@ module.exports = function(app){
 
   //for root route, send them through requireAuth and if they get through that run the following function to handle the request 
   app.get('/', requireAuth, function(req, res){
-    res.send({ hi: 'there' });
+    res.send({ message: 'Super secret code is fdsklf' });
   });
 
   app.post('/signin', requireSignin, Authentication.signin);

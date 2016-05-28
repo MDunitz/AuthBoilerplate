@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 
 //***DB (mongodb) setup***
 //from the command line (project directory)
@@ -28,6 +28,8 @@ const mongoose = require('mongoose');
 //morgan and bodyparser are express middleware, any incoming request (to our server) will pass through them (app.use registers them as middleware)
 //morgan is a logging framework-logs incoming requests in the command line-use for debugging
 app.use(morgan('combined'));
+//use to prevent cors errors/rejections, tell server to accept everything, middleware specifically handling cors-could also specify domains to allow to limit access to api
+app.use(cors());
 //bodyparser-parses incoming requests, and will parse them as if they were json 
 app.use(bodyParser.json({type: '*/*'}));
 //calling the router function we created with our app
